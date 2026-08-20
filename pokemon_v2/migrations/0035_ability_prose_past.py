@@ -6,7 +6,7 @@ class Migration(migrations.Migration):
         ("pokemon_v2", "0034_item_cost_and_time_of_day"),
     ]
 
-   operations = [
+    operations = [
         migrations.CreateModel(
             name="AbilityProsePast",
              fields=[
