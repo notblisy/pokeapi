@@ -13,6 +13,7 @@ __all__: tuple[str, ...] = (
     "AbilityEffectText",
     "AbilityFlavorText",
     "AbilityName",
+    "AbilityProsePast",
     "Berry",
     "BerryFirmness",
     "BerryFirmnessName",
@@ -972,6 +973,8 @@ class Ability(HasName, HasGeneration):
 class AbilityEffectText(HasLanguage, HasEffect, HasShortEffect, HasAbility):
     pass
 
+class AbilityProsePast(HasGeneration, HasLanguage, HasEffect, HasShortEffect, HasAbility):
+    pass
 
 class AbilityFlavorText(IsFlavorText, HasAbility, HasVersionGroup):
     pass

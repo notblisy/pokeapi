@@ -316,6 +316,17 @@ def _build_abilities():
 
     build_generic((AbilityFlavorText,), "ability_flavor_text.csv", csv_record_to_objects)
 
+        def csv_record_to_objects(info):
+        yield AbilityProsePast(
+            ability_id=int(info[0]),
+            version_group_id=int(info[1]),
+            language_id=int(info[2]),
+            short_effect=info[3],
+            effect=info[4],
+        )
+
+    build_generic((AbilityProsePast,), "ability_prose_past.csv", csv_record_to_objects)
+
 
 ####################
 #  CHARACTERISTIC  #

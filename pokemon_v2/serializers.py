@@ -36,6 +36,7 @@ __all__: tuple[str, ...] = (
     "AbilityNameSerializer",
     "AbilityPokemonDetailSerializer",
     "AbilitySummarySerializer",
+    "AbilityProsePastSerializer",
     "BerryDetailSerializer",
     "BerryFirmnessDetailSerializer",
     "BerryFirmnessNameSerializer",
@@ -1151,6 +1152,13 @@ class AbilityEffectTextSerializer(serializers.ModelSerializer[AbilityEffectText]
         model = AbilityEffectText
         fields = ("effect", "short_effect", "language")
 
+class AbilityProsePastSerializer(serializers.ModelSerializer[AbilityProsePast]):
+    language = LanguageSummarySerializer()
+    generation = GenerationSummarySerializer()
+
+    class Meta:
+        model = AbilityProsePast
+        fields = ("effect", "short_effect", "language")
 
 class AbilityFlavorTextSerializer(serializers.ModelSerializer[AbilityFlavorText]):
     flavor_text = serializers.CharField()
@@ -1205,6 +1213,8 @@ class AbilityDetailSerializer(serializers.ModelSerializer[Ability]):
     generation = GenerationSummarySerializer()
     effect_changes = AbilityChangeSerializer(many=True, read_only=True, source="abilitychange")
     pokemon = serializers.SerializerMethodField("get_ability_pokemon")
+    past_effect_entries = AbilityProsePastSerializer(many=True, read_only=True, source="abilityprosepast")
+  
 
     class Meta:
         model = Ability
@@ -1218,6 +1228,7 @@ class AbilityDetailSerializer(serializers.ModelSerializer[Ability]):
             "effect_changes",
             "flavor_text_entries",
             "pokemon",
+            "past_effect_entries", 
         )
 
     @extend_schema_field(AbilityPokemonDetailSerializer(many=True))
