@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         blank=True,
                         null=True,
-                        on_delete=django.db.models.deletion.CASCADE,
+                        on_delete=models.CASCADE,
                         related_name="abilityprosepast",
                         to="pokemon_v2.Ability",
                     ),
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         blank=True,
                         null=True,
-                        on_delete=django.db.models.deletion.CASCADE,
+                        on_delete=models.CASCADE,
                         related_name="abilityprosepast",
                         to="pokemon_v2.Generation",
                     ),
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
                     models.ForeignKey(
                         blank=True,
                         null=True,
-                        on_delete=django.db.models.deletion.CASCADE,
+                        on_delete=models.CASCADE,
                         related_name="abilityprosepast_language",
                         to="pokemon_v2.language",
                     ),
